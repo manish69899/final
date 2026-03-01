@@ -1,0 +1,51 @@
+# ═══════════════════════════════════════════════════════════════
+# 📦 requirements.txt - PYTHON PACKAGES LIST
+# ═══════════════════════════════════════════════════════════════
+#
+# 📌 KYUN USE HOTA HAI?
+#    - Is file mein sab required packages ki list hoti hai
+#    - Ek command mein sab install ho jate hain: pip install -r requirements.txt
+#    - Version fix karne se compatibility issues nahi hote
+#
+# 📌 INSTALL COMMAND:
+#    pip install -r requirements.txt
+# ═══════════════════════════════════════════════════════════════
+
+# ───────────────────────────────────────────────────────────────
+# 🤖 PYROGRAM - Telegram Bot Framework
+# ───────────────────────────────────────────────────────────────
+# Pyrogram: Modern Telegram MTProto API framework
+# Async support, easy syntax, powerful features
+pyrogram==2.0.106
+
+
+flask
+
+# Tgcrypto: Fast crypto operations for Telegram
+# Pyrogram ke saath use hota hai (performance boost)
+tgcrypto
+
+# ───────────────────────────────────────────────────────────────
+# 🔧 UTILITIES
+# ───────────────────────────────────────────────────────────────
+# python-dotenv: .env file se values load karne ke liye
+python-dotenv
+
+# aiosqlite: Async SQLite database operations
+# Users, files, settings store karne ke liye
+aiosqlite
+
+# hashids: Unique short IDs generate karne ke liye
+# File links ke liye short codes banate hain
+hashids
+
+# aiohttp: Async HTTP requests
+# Shortener API call karne ke liye
+aiohttp
+
+# ───────────────────────────────────────────────────────────────
+# 📅 SCHEDULER (Auto Delete ke liye)
+# ───────────────────────────────────────────────────────────────
+# APScheduler: Background tasks schedule karne ke liye
+# Auto delete files after X hours
+apscheduler

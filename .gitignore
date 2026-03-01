@@ -1,0 +1,18 @@
+# Secret Files (Isko kabhi net par mat dalna)
+.env
+
+# Database aur Session files (Ye server par khud banengi)
+*.session
+*.session-journal
+*.db
+bot_database.db
+FileBot.session
+
+# Python Cache aur Virtual Environment
+__pycache__/
+*.pyc
+venv/
+env/
+.vs/
+
+txt.txt
