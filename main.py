@@ -19,7 +19,7 @@ from database.db import db
 from utils.commands import set_bot_commands
 from utils.auto_delete import start_auto_delete_scheduler
 from utils.keep_alive import keep_alive
-
+from timer import auto_delete_file
 # ───────────────────────────────────────────────────────────────
 # 🤖 BOT CLIENT CREATE
 # ───────────────────────────────────────────────────────────────

@@ -135,10 +135,8 @@ HTML_CONTENT = """
 </head>
 <body>
 
-    <!-- Matrix Animation Canvas -->
     <canvas id="matrixCanvas"></canvas>
 
-    <!-- Main Content -->
     <div class="terminal-box">
         <h1>SYSTEM ONLINE</h1>
         
@@ -160,7 +158,6 @@ HTML_CONTENT = """
         </div>
     </div>
 
-    <!-- Matrix Digital Rain Script -->
     <script>
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
@@ -235,5 +232,6 @@ def keep_alive():
     Ek alag thread mein Flask server chalata hai
     taaki aapka main bot block na ho.
     """
-    t = Thread(target=run)
+    # YAHAN CHANGE KIYA HAI: daemon=True lagaya gaya hai
+    t = Thread(target=run, daemon=True)
     t.start()

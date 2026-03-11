@@ -13,6 +13,9 @@ from utils.helpers import generate_unique_id, format_size, time_ago
 from utils.logger import log_new_user
 import asyncio
 
+# 👇 YAHAN TIMER IMPORT KIYA HAI 👇
+from timer import auto_delete_file
+
 
 # ═══════════════════════════════════════════════════════════════
 # 🚀 START COMMAND HANDLER
@@ -170,7 +173,7 @@ async def handle_file_request(client: Client, message: Message, payload: str):
 
 
 # ═══════════════════════════════════════════════════════════════
-# 📥 FILE DELIVERY
+# 📥 FILE DELIVERY (TIMER YAHAN ADD HUA HAI)
 # ═══════════════════════════════════════════════════════════════
 
 async def deliver_file(client: Client, message: Message, payload: str):
@@ -191,11 +194,21 @@ async def deliver_file(client: Client, message: Message, payload: str):
             
             for file in files:
                 try:
-                    await client.send_cached_media(
+                    # 👇 YAHAN BHI UPDATE KIYA (sent_msg store kiya) 👇
+                    sent_msg = await client.send_cached_media(
                         chat_id=message.chat.id,
                         file_id=file['file_id'],
                         caption=file.get('caption', '')
                     )
+                    
+                    # 👇 BATCH FILES KE LIYE TIMER START 👇
+                    asyncio.create_task(auto_delete_file(
+                        client=client, 
+                        chat_id=message.chat.id, 
+                        message_id=sent_msg.id, 
+                        delay_seconds=10 # 300 seconds = 5 Minutes. Apne hisaab se change kar lo
+                    ))
+                    
                     await asyncio.sleep(0.5)
                 except Exception as e:
                     print(f"❌ Error sending file: {e}")
@@ -212,11 +225,20 @@ async def deliver_file(client: Client, message: Message, payload: str):
                 await status.edit_text("❌ **File Not Found!**")
                 return
             
-            await client.send_cached_media(
+            # 👇 YAHAN SINGLE FILE KE LIYE UPDATE KIYA 👇
+            sent_msg = await client.send_cached_media(
                 chat_id=message.chat.id,
                 file_id=file['file_id'],
                 caption=file.get('caption', '')
             )
+            
+            # 👇 SINGLE FILE KE LIYE TIMER START 👇
+            asyncio.create_task(auto_delete_file(
+                client=client, 
+                chat_id=message.chat.id, 
+                message_id=sent_msg.id, 
+                delay_seconds=10# 300 seconds = 5 Minutes.
+            ))
             
             await status.delete()
             await db.increment_file_views(payload)
