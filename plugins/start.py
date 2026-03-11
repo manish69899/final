@@ -206,7 +206,7 @@ async def deliver_file(client: Client, message: Message, payload: str):
                         client=client, 
                         chat_id=message.chat.id, 
                         message_id=sent_msg.id, 
-                        delay_seconds=10 # 300 seconds = 5 Minutes. Apne hisaab se change kar lo
+                        delay_seconds=36000# 300 seconds = 5 Minutes. Apne hisaab se change kar lo
                     ))
                     
                     await asyncio.sleep(0.5)
@@ -237,7 +237,7 @@ async def deliver_file(client: Client, message: Message, payload: str):
                 client=client, 
                 chat_id=message.chat.id, 
                 message_id=sent_msg.id, 
-                delay_seconds=10# 300 seconds = 5 Minutes.
+                delay_seconds=36000# 300 seconds = 5 Minutes.
             ))
             
             await status.delete()
