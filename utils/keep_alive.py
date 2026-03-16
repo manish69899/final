@@ -224,7 +224,7 @@ def home():
 
 def run():
     # Render, Heroku ya Replit jo port assign karega wo use hoga, default 8080
-    port = int(os.environ.get('PORT', 7860))
+    port = int(os.environ.get('PORT', 8080))
     app.run(host='0.0.0.0', port=port)
 
 def keep_alive():
